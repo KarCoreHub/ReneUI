@@ -1,0 +1,18 @@
+
+<div class="login-c-form-wrapper">
+    
+<form class="login-form">
+    <div class="card" *ngFor="let k of employees" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{k.empId}}- {{k.empName}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted"> {{k.empAddress}}</h6>
+          <p class="card-text"> {{k.empRole}}- {{k.empSkillSets}}.</p>        
+        </div>
+      </div>
+    <label class="error-message">{{errorMessage}}</label>     
+</form>
+</div>
+
+
+
+    

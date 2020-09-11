@@ -1,0 +1,65 @@
+<div class="register-container">
+  <mat-card>
+      <mat-card-title>Add New Employee</mat-card-title>
+      <mat-card-content>
+          <label class="error-message">{{ submitMessage }}</label>
+          <form class="addEmployee-Form" [formGroup]="addEmployeeForm" >                       
+             
+            <mat-form-field>
+              <mat-label>Employee Name</mat-label>       
+              <input matInput class="empName" minlength="3" pattern="[a-zA-Z ]*"  formControlName="empName" required>
+              <mat-error *ngIf="addEmployeeForm.get('empName').touched && addEmployeeForm.get('empName').hasError('required')">Enter Employee Name</mat-error>           
+              <mat-error *ngIf="addEmployeeForm.get('empName').errors?.minlength">Minimum 3 charactors needed.</mat-error>  
+              <mat-error *ngIf="addEmployeeForm.get('empName').hasError('pattern')">Please enter only characters/Numbers</mat-error>
+          </mat-form-field>  
+
+          <mat-form-field>
+            <mat-label>Employee Address</mat-label>       
+            <input matInput class="empAddress" minlength="6" pattern="[a-zA-Z0-9, ]*"  formControlName="empAddress" required>
+            <mat-error *ngIf="addEmployeeForm.get('empAddress').touched && addEmployeeForm.get('empAddress').hasError('required')">Enter Employee Address</mat-error>           
+            <mat-error *ngIf="addEmployeeForm.get('empAddress').errors?.minlength">Minimum 6 charactors needed.</mat-error>  
+            <mat-error *ngIf="addEmployeeForm.get('empAddress').hasError('pattern')">Please enter only characters/Numbers</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Employee Skills</mat-label>       
+          <input matInput class="empSkillSets" minlength="6" pattern="[a-zA-Z, ]*"  formControlName="empSkillSets" required>
+          <mat-error *ngIf="addEmployeeForm.get('empSkillSets').touched && addEmployeeForm.get('empSkillSets').hasError('required')">Enter Employee Skills</mat-error>           
+          <mat-error *ngIf="addEmployeeForm.get('empSkillSets').errors?.minlength">Minimum 6 charactors needed.</mat-error>  
+          <mat-error *ngIf="addEmployeeForm.get('empSkillSets').hasError('pattern')">Please enter only characters</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Employee Role</mat-label>       
+        <input matInput class="empSkillSets" minlength="6" pattern="[a-zA-Z, ]*"  formControlName="empRole" required>
+        <mat-error *ngIf="addEmployeeForm.get('empRole').touched && addEmployeeForm.get('empRole').hasError('required')">Enter Employee Role</mat-error>           
+        <mat-error *ngIf="addEmployeeForm.get('empRole').errors?.minlength">Minimum 6 charactors needed.</mat-error>  
+        <mat-error *ngIf="addEmployeeForm.get('empRole').hasError('pattern')">Please enter only characters</mat-error>
+    </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob">
+        <mat-error *ngIf="addEmployeeForm.get('dob').hasError('required')">Select Date of Birth</mat-error>           
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button (click)="picker.open()">Select DOB</button>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="doj" >
+        <mat-error *ngIf="addEmployeeForm.get('doj').hasError('required')">Select Date of Joining</mat-error>           
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button (click)="picker1.open()">Select DOJ</button>
+
+         
+      <mat-card-actions>
+        <button mat-button (click)="AddEmployee()" [disabled]="addEmployeeForm.invalid">Submit</button>
+      </mat-card-actions>
+      </form>
+      </mat-card-content>
+  </mat-card>
+</div>
+

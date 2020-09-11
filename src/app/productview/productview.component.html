@@ -1,0 +1,25 @@
+<div class="register-container">
+  <mat-card>
+      <mat-card-title>Update Product Details</mat-card-title>
+      <mat-card-content>
+          <label class="error-message">{{ submitMessage }}</label>
+          <form class="register-form" [formGroup]="registerForm" (ngSubmit)="ConfirmEvent()">
+                               
+            <mat-form-field>
+              <mat-label>Employees</mat-label>
+              <mat-select formControlName="EventValue"  >
+                <mat-option *ngFor="let k of employees" [value]="k.empId">
+                  {{k.empId}}-  {{k.empName}} 
+                </mat-option>
+              </mat-select>  
+            </mat-form-field> 
+                                   
+            
+            <label class="error-message">{{errorMessage}}</label> 
+              <mat-card-actions>
+                  <button mat-button [disabled]="registerForm.invalid">Confirm</button>
+              </mat-card-actions>
+          </form>
+      </mat-card-content>
+  </mat-card>
+</div>
